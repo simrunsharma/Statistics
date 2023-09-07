@@ -1,0 +1,58 @@
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(palmerpenguins)
+
+view(penguins)
+
+```
+
+```{r}
+glimpse(penguins)
+```
+
+#### The sample size is 344 penguins and the number of variables is 8.
+
+-   which variables are categorical and which are numeric? is there any missing data? are the categorical variables stored appropriately?
+
+    #### Categorical: species, island, sex and Numeric: bill_length,bill-depth, and year.
+
+```{r}
+all_missing<-colSums(is.na(penguins))
+all_missing
+```
+
+```{r}
+ggplot(penguins, aes(x=body_mass_g, y=bill_length_mm, col=sex)) + geom_point()
+```
+
+```{r}
+ggplot(penguins, aes(x=body_mass_g, y=bill_length_mm, col=species)) + geom_point()
+```
+
+```{r}
+ggplot(penguins, aes(x=bill_length_mm, y=body_mass_g, col=species))+
+  geom_point()+
+  labs(x="Length of bill", y= "body mass")+
+  geom_smooth(method=lm,se=FALSE, aes(col=species))
+```
+
+### Chinstrap and Gentoo are interacting and Chinstrap and Adelle are interacting BUT Adelle and Gentoo are not interaction (red and blue not interacting). The three categorical vairables we see that Adelle and Gentoo species don't have an interaction or influence on the relationship between body mass and length of bill.
+
+```{r}
+summary(penguins)
+```
+
+```{r}
+penguin_model_interact <- lm(body_mass_g ~ bill_length_mm + bill_length_mm * sex + bill_length_mm * species,data = penguins)
+summary(penguin_model_interact)
+```
+
+#### The estimate for bill_length_mm(first value) means that if the bill length increases by 1 mm weight increases by 32.859.
+
+```{r}
+tidy(penguin_model_interact, conf.int=TRUE)
+
+```
+
+#### The p-value tells us the only value of significance is the first three variables are the bill length, intercept, and the sex male.
