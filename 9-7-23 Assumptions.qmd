@@ -1,0 +1,101 @@
+---
+title: "Assumptions Exercise"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+library("tidyverse")
+library("ISLR2")
+data(Auto)
+```
+
+```{r}
+summary(Auto)
+```
+
+#### Categorical Variables: origin and name
+
+```{r}
+car_model <- lm(mpg ~ horsepower + displacement + acceleration + cylinders + origin, data=Auto)
+summary(car_model)
+```
+
+#### The standard error for cylinders is the greatest compared to all other predictors.
+
+```{r}
+Auto %>% group_by(cylinders) %>% count()
+```
+
+```{r}
+view(Auto)
+
+```
+
+```{r}
+list_of_cylinders <- Auto["cylinders"]
+to_keep <- c(4,6,8)
+to_remove <- c(3,5)
+
+Auto$cylinders <- factor(Auto$cylinders, levels = to_keep)
+
+Auto <- Auto %>% filter(!is.na(cylinders))
+
+table(Auto$cylinders)
+                  
+```
+
+```{r}
+plot(car_model)
+```
+
+```{r}
+plot(car_model, which = 1)
+```
+
+```{r}
+plot(car_model,which=2)
+```
+
+```{r}
+ggplot(Auto, aes(x = mpg, y = displacement, col = cylinders)) +
+  geom_point() +
+  labs(col = "Cylinders")
+```
+
+#### I think a transformation is needed because this pattern is non linear breaking the linearity assumption. I will try both and see which transformation is better.
+
+```{r}
+ggplot(Auto, aes(x = mpg, y = log(displacement), col = cylinders)) +
+  geom_point() +
+  labs(col = "Cylinders")
+  
+ggplot(Auto, aes(x = mpg, y = displacement^2, col = cylinders)) +
+  geom_point() +
+  labs(col = "Cylinders")
+
+
+```
+
+```{r}
+#I am going to change displacement to log transformation to see if the standard error is better:
+
+displaced_model_log <- lm(mpg~ displacement + log(displacement),data=Auto)
+
+tidy(displaced_model_log, conf.int=TRUE)
+plot(displaced_model_log, which = 1)
+plot(displaced_model_log, which = 2)
+
+Auto$displacement_squared <- Auto$displacement^2
+displaced_model_quad <- lm(mpg~ displacement + displacement_squared,data=Auto)
+
+tidy(displaced_model_quad, conf.int=TRUE)
+plot(displaced_model_quad, which = 1)
+plot(displaced_model_quad, which = 2)
+
+
+```
+
+#### From my analysis the standard error decreased significantly when we used a quadratic transformation of the displacement variable.
