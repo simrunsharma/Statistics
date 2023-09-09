@@ -27,3 +27,8 @@ Develop the ability to make careful and critical decisions about model building.
 
 ### 4. Communicate Results Effectively
 Effective communication is a key component of data science. This course will equip you with the skills to communicate model results to a broad audience through both written and oral communication. You'll learn how to convey complex findings in a clear and accessible manner.
+
+Specific Files and Assignments:
+# 1. Assignment: Auto Dataset Analysis (9-7-23)
+For this assignment, we dive into the Auto dataset, accessible [here](https://rdrr.io/cran/ISLR2/man/Auto.html). Our approach follows a systematic path to gain insights and construct regression models. We initiated by exploring a data dictionary to understand variable meanings. We then built an initial regression model, focusing on 'mpg' as the dependent variable. Notably, we scrutinized the standard errors of the 'cylinders' predictor. Additionally, we performed data cleanup for 'cylinders' due to low observation counts for specific levels. Further analysis involved evaluating residual and QQ plots to assess model assumptions and identify potential violations. We also delved into model transformations, considering predictor variables such as 'displacement,' 'origin,' and 'cylinder levels,' along with the outcome variable 'mpg.' This structured approach guides us in extracting valuable insights and constructing robust regression models for the Auto dataset.
+
