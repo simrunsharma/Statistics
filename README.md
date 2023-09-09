@@ -2,16 +2,6 @@
 
 Welcome to the Statistics for Data Science GitHub repository! This repository contains resources and materials for a course that aims to develop a strong understanding of statistical modeling, a fundamental skill for aspiring data scientists. Statistical models play a crucial role in answering research questions and extracting meaningful insights from diverse datasets.
 
-## Course Topics
-
-This course covers a range of statistical topics essential for data science:
-
-1. **Linear Regression**: Understand the fundamentals of linear regression, a foundational technique for modeling relationships between variables.
-
-2. **Generalized Linear Models**: Explore more advanced modeling techniques, including generalized linear models, to handle complex data and non-linear relationships.
-
-3. **Special Topics**: Dive into specialized areas such as survival models and hierarchical models, gaining expertise in solving specific types of data problems.
-
 ## Learning Objectives
 
 In the Master of Information and Data Science (MIDS) program, grasping the content is just the beginning. This course is designed to help you not only understand statistical modeling but also cultivate essential skills for a successful data scientist:
@@ -29,6 +19,10 @@ Develop the ability to make careful and critical decisions about model building.
 Effective communication is a key component of data science. This course will equip you with the skills to communicate model results to a broad audience through both written and oral communication. You'll learn how to convey complex findings in a clear and accessible manner.
 
 Specific Files and Assignments:
-# 1. Assignment: Auto Dataset Analysis (9-7-23)
+#### 1. Assignment: Auto Dataset Analysis Multiple Linear Regression and Transformations
 For this assignment, we dive into the Auto dataset, accessible [here](https://rdrr.io/cran/ISLR2/man/Auto.html). Our approach follows a systematic path to gain insights and construct regression models. We initiated by exploring a data dictionary to understand variable meanings. We then built an initial regression model, focusing on 'mpg' as the dependent variable. Notably, we scrutinized the standard errors of the 'cylinders' predictor. Additionally, we performed data cleanup for 'cylinders' due to low observation counts for specific levels. Further analysis involved evaluating residual and QQ plots to assess model assumptions and identify potential violations. We also delved into model transformations, considering predictor variables such as 'displacement,' 'origin,' and 'cylinder levels,' along with the outcome variable 'mpg.' This structured approach guides us in extracting valuable insights and constructing robust regression models for the Auto dataset.
+
+#### 2. Assignment: Palmer Penguin Regression Analysis
+For this assignment, we analyze data from Dr. Kristen Gorman and the Palmer Station, Antarctica LTER, accessible [here](https://pallter.marine.rutgers.edu/). Our approach involves systematic exploration, variable selection, and regression modeling. We start by exploring the dataset's structure using `glimpse()`. After identifying categorical and numeric variables and handling missing data, we select an outcome variable and a primary predictor. We create informative scatter plots and consider interaction terms. Regression modeling and interpretation follow, including assessing species significance. Finally, we evaluate adjusted R-squared values to draw meaningful insights from the data.
+
 
